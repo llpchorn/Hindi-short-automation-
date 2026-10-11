@@ -106,7 +106,7 @@ def main():
         clips.append(ImageClip(path).set_duration(scene_duration))
 
     video = concatenate_videoclips(clips, method="compose").set_audio(audio)
-    video = video.resize(height=1280)
+    video = video.set_fps(24)
     video.write_videofile(
         f"{OUT}/short.mp4", fps=24, codec="libx264",
         audio_codec="aac", preset="ultrafast", logger=None
